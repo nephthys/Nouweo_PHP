@@ -1,0 +1,64 @@
+
+.flots { padding: 5px 10px }
+.flottant_gauche, .flot_gauche { float: left }
+.flottant_droite, .flot_droite { float: right }
+
+.align_text_gauche { text-align: left }
+.align_text_centre { text-align: center }
+.align_text_droite { text-align: right }
+
+.barre { text-decoration: line-through }
+.souligne { text-decoration: underline }
+
+ul.style_liste_puce {
+	list-style-image: url(images/puce_code.png);
+}
+
+ul.style_liste_puce li {
+	border: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+h3.titre1, h4.titre2 { padding: 0; margin: 0 }
+
+h3.titre1 {
+	color: #9ca813;
+	font-size: 1.3em;
+	padding: 0 15px;
+}
+
+h3.titre1 span { border-bottom: 1px solid #d1d972 }
+
+h4.titre2 { 
+	font-style: italic;
+	font-weight: bold;
+	letter-spacing: 2px;
+	font-size: 1.2em;
+	padding: 0 15px;
+}
+
+.citation_top {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.citation_mid {
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	padding: 10px;
+	background: #f4f4f4;
+	border: 1px solid #CCCCCC;
+}
+
+blockquote.question {
+	background: url(images/balise_question.png) no-repeat 10px center;
+	font-weight: bold;
+	color: #899100;
+	padding: 14px 0 14px 62px;
+	font-size: 1.1em;
+}
+
+blockquote.question { margin: 0 }

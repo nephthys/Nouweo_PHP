@@ -1,0 +1,73 @@
+.nw_form p { margin: 0; padding: 7px 0 }
+
+.nw_form .label_champs, .nw_form .gauche_form, .nw_form .padding_form {
+	padding: 10px 0;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.label_champs label, .float_form {
+	float: left;
+	width: 15%;
+	margin-right: 1%;
+	text-align: right;
+}
+
+.nw_form  .gauche_form, .nw_form .padding_form, .nw_form .submit_form {
+	padding-left: 16%;
+}
+
+.label_champs label, .float_form label { font-weight: bold }
+
+.nw_form .conseil {
+	color: #666666;
+	font-size: 0.8em;
+}
+
+.nw_form .taille_textarea {
+	width: 90%;
+	height: 250px;
+}
+
+fieldset {
+	border: 0px solid #FFF;
+	border-bottom: 2px solid #9c9c9c;
+	margin-bottom: 8px;
+}
+
+legend {
+	color: #617417;
+	background: url(images/left_legend.png) left no-repeat;
+	padding: 3px 0 5px 23px;
+}
+
+
+ul.section_bbcode {
+	margin: 0 15px 6px 0;
+	padding: 0;
+	background-color: #e8eeae;
+	height: 26px;
+	float: left;
+	border-bottom: 1px solid #c4ca7e;
+	list-style-type: none;
+}
+
+.section_bbcode li { float: left }
+
+.section_bbcode img {
+	display: block;
+	padding: 5px 8px;
+	border-right: 1px solid #d6db9c;
+}
+
+ul.section_bbcode li ul { padding: 0; margin: 0; height: auto; background: #cfd773; position: absolute; z-index: 100; display: none }
+ul.section_bbcode li ul li { display: block }
+ul.section_bbcode li ul li img { display: inline; padding: 0; border: 0 }
+ul.section_bbcode li ul li a { display: block; padding: 5px 8px; text-decoration: none }
+
+
+.section_bbcode img:hover { background: #cfd773 }
+.section_bbcode img.last { border: 0 }
+.section_bbcode, .section_bbcode img:hover, ul.section_bbcode li ul { -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;border-radius: 7px; }
+
+.one_widget .nw_form .label_champs label, .one_widget .nw_form .float_form { width: 30% }
+.one_widget .nw_form  .gauche_form, .one_widget .nw_form .padding_form, .one_widget .nw_form .submit_form { padding-left: 31% }

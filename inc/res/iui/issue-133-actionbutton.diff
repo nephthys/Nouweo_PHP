@@ -1,0 +1,83 @@
+--- iui.js	Mon Mar 30 18:29:07 2009
++++ iui.actionbutton.js	Wed Apr 29 08:35:54 2009
+@@ -20,6 +20,7 @@
+ var hasOrientationEvent = false;
+ var portraitVal = "portrait";
+ var landscapeVal = "landscape";
++var actionButtons = [];
+ 
+ // *************************************************************************************************
+ 
+@@ -46,6 +47,8 @@
+                     setTimeout(slidePages, 0, fromPage, page, backwards);
+                 else
+                     updatePage(page, fromPage);
++                    
++				loadActionButton(page);
+             }
+         }
+     },
+@@ -438,5 +441,63 @@
+ 
+ function $(id) { return document.getElementById(id); }
+ function ddd() { console.log.apply(console, arguments); }
++
++function loadActionButton(page)
++{
++	try
++	{
++		var btn = $("actionButton");
++		var lSet = false;
++
++		if (!actionButtons[page.id])
++		{
++			actionButtons[page.id] = { "title" : "", "href" : null, "target" : null, "visible" : true };
++			
++			if (page.getAttribute("actionbutton"))
++			{
++				var oButton = eval("("+page.getAttribute("actionbutton")+")");
++				
++				if (oButton)
++				{
++					if (oButton.title	) actionButtons[page.id].title 	= oButton.title;
++					if (oButton.href	) actionButtons[page.id].href 	= oButton.href;
++					if (oButton.target	) actionButtons[page.id].target	= oButton.target;
++				}
++				
++				if (!btn)
++				{
++					var oToolbar = document.getElementsByClassName("toolbar")[0];
++					btn = document.createElement("A");
++					btn.id="actionButton";
++					btn.className="button";
++					
++					oToolbar.appendChild(btn);
++				}
++			} 
++			else if (!btn) // stores the fact that the page has no button
++			{
++				lSet = true;
++				actionButtons[page.id].visible = false;
++			}
++			else
++			{
++				lSet = true;
++				actionButtons[page.id].title  = btn.innerHTML;
++				actionButtons[page.id].href   = btn.href;
++				actionButtons[page.id].target = btn.target;
++			}
++		}
++		
++		if (!lSet)
++		{
++			btn.style.visibility = (actionButtons[page.id].visible ? "visible" : "hidden");
++			
++			if (actionButtons[page.id].title 	!= null) btn.innerHTML 	= actionButtons[page.id].title;
++			if (actionButtons[page.id].href 	!= null) btn.href 		= actionButtons[page.id].href;
++			if (actionButtons[page.id].target 	!= null) btn.target 	= actionButtons[page.id].target;
++		}
++	}
++	catch (ex) { console.log(ex); }
++}
+ 
+ })();

@@ -1,0 +1,42 @@
+--- iui.js	Mon Mar 30 18:29:07 2009
++++ iui.stylesheet.js	Wed Apr 29 08:21:40 2009
+@@ -20,6 +20,7 @@
+ var hasOrientationEvent = false;
+ var portraitVal = "portrait";
+ var landscapeVal = "landscape";
++var loadedPages = [];
+ 
+ // *************************************************************************************************
+ 
+@@ -46,6 +47,14 @@
+                     setTimeout(slidePages, 0, fromPage, page, backwards);
+                 else
+                     updatePage(page, fromPage);
++                    
++			    if (loadedPages.indexOf(page.id) == -1)
++			    {
++			    	loadedPages.push(page.id);
++   
++			    	if (page.getAttribute("stylesheet"))
++		    			loadStylesheet(page.getAttribute("stylesheet"));
++	    		}
+             }
+         }
+     },
+@@ -438,5 +447,16 @@
+ 
+ function $(id) { return document.getElementById(id); }
+ function ddd() { console.log.apply(console, arguments); }
++
++function loadStylesheet(filename)
++{
++	var stylesheet = document.createElement("link");
++	
++	stylesheet.setAttribute("rel", "stylesheet");
++	stylesheet.setAttribute("type", "text/css");
++	stylesheet.setAttribute("href", filename);
++
++	document.getElementsByTagName("head")[0].appendChild(stylesheet);
++}
+ 
+ })();

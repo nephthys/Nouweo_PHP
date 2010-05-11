@@ -1,0 +1,91 @@
+body {
+	font: 0.8em "Helvetica", "Tahoma", "Verdana", sans-serif;
+	margin: 0;
+	background: #fff;
+	color: #1d1d1d;
+}
+
+h1 { margin: 0 }
+a img { border: 0 }
+
+.table_css {
+	display: table-cell;
+	vertical-align: middle;
+	color: #8db8e4;
+}
+
+.bleu {
+	background: #084787 url(images/fond_soon.png) repeat-x top;
+}
+
+.wrapper, .space {
+	width: 700px;
+	margin: 0 auto;
+}
+
+p.redir_box {
+	-moz-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	padding: 8px 15px;
+}
+
+p.message_info { background-color: #e8fec5; color: #5b7909; border: 2px solid #d2f0a3 }
+p.message_erreur { background-color: #ffcece; color: #7a0a0a; border: 2px solid #f2b7b7 }
+
+a:link, a:visited, a:active {
+	color: #005aad;
+}
+
+ul.tabnavigation {
+	list-style: none;
+	margin: 0;
+	padding: 0 10px;
+	background-color: #023161;
+	-moz-border-radius: 7px 7px 0 0;
+	-khtml-border-radius: 7px 7px 0 0;
+	-webkit-border-radius: 7px 7px 0 0;
+	border-radius: 7px 7px 0 0;
+	height: 35px;
+}
+
+ul.tabnavigation li {
+	float: left;
+	display: block;
+	height: 19px;
+	padding: 8px 17px;
+	border-right: 1px solid #084787;
+}
+
+ul.tabnavigation li a {
+    text-decoration: none;
+	color: #8db1d5;
+}
+
+ul.tabnavigation li a.selected {
+	color: #fff;
+}
+                
+ul.tabnavigation li a:focus {
+	outline: 0;
+}
+
+
+.tabcontent {
+	
+}
+
+.space { background-color: #fff; padding: 10px; -moz-border-radius: 10px; -khtml-border-radius: 10px;-webkit-border-radius: 10px; border-radius: 10px }
+
+div.tabs > div { padding: 5px 0 }
+div.tabs > div h2 { margin-top: 0 }
+
+.code_invit { font-size: 1.3em; text-align: center }
+.code_invit input { width: 70%; padding: 5px 10px; font-size: 1.3em }
+.tpetit { font-size: 0.85em }
+
+
+p.champs { font-size: 1.2em }
+p.champs label { width: 150px; float: left; margin-top: 5px; margin-right: 10px; text-align: right }
+p.champs input { width: 50%; padding: 3px 7px; font-size: 1.2em }

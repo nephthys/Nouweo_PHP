@@ -1,0 +1,1 @@
+<block name="news"><li><a href="mobile-10-{news.ID}-{news.REWRITE}.html"><if cond="{$news.IMAGE_ID} != 0"><img src="{_ASSETS_['url_upload']}upload/th1/{news.IMAGE_NOM}_{news.ID}.png" class="img_news" alt="" /></if>{news.TITRE}<br /><span class="tpetit">{news.DATE}</span></a></li><blockelse /><li>{LANG['news']['none_news']}</li></block>

@@ -1,0 +1,24 @@
+a { text-decoration: none; color: #005aad }
+
+img { border: 0; vertical-align: middle }
+	img.img_news { float: left; margin-right: 10px; width: 50px; height: 50px }
+	
+ul.author_info { padding: 0; margin: 4px 15px 8px 15px; list-style-type: none; font-size: 0.85em }
+ul.author_info li { display: inline; margin-right: 15px }	
+
+li.list_pg a { font-weight: 100; color: #000; border: 0; background-image: none; background-position: top; display: inline; padding: 0; margin: 0 }
+li.list_pg .page_actu { font-weight: bold; color: #005aad }
+li.list_pg .blc_next_pages { float: right; padding: 0 10px }
+li.list_pg .blc_prev_pages { float: left; padding: 0 10px }
+
+.tpetit { color: #666666; font-size: 14px; font-weight: 100 }
+.hightxt { font-size: 20px; font-weight: bold }
+
+	/* update iui.css */
+	.dialog .zone { position: absolute; width: 100%; margin: 16px 0; color: #999999; text-align: center }	
+	.panel > fieldset.description { padding: 5px 8px; text-align: left }
+		.panel > fieldset.description a { text-decoration: underline }
+	#home input#search { padding: 6px }
+		
+	a.searchSubmit { text-align: center; border-width: 0 5px; display: block; padding: 0 3px;width: auto;height: 30px;line-height: 30px;font-family: inherit;font-size: 12px;font-weight: bold;color: #FFFFFF;text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+    text-overflow: ellipsis;text-decoration: none;overflow: hidden;white-space: nowrap;background: none;-webkit-border-image: url(../../inc/res/iui/toolButton.png) 0 5 0 5; }

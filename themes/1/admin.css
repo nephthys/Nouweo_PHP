@@ -1,0 +1,27 @@
+.content_blocks {
+	display: none;
+}
+
+#intro_section {
+	display: block;
+}
+
+#sections{
+	float: right;
+	width: 40%;
+}
+
+.block {
+	float: left;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+.block.enabled {
+	cursor: pointer;
+}
+
+.row_blocks {
+	clear: left;
+}

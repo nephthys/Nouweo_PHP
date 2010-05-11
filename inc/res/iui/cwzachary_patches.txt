@@ -1,0 +1,13 @@
+var loadedPages = [];
+var actionButtons = [];
+
+
+#     Feature             Notes
+---   ----------------    -------------------
+127   stylesheet load     loadStylesheet(filename)  called from showPage
+128   script load         loadScript(filename, callback) called from showPage
+129   script execute      eval(page.getAttribute("onload") in showPage
+130   onFocus             if (page.onfocus) page.onfocus(); in showPage
+131   onBlur              in showPage, if fromPage call from.onblur
+132   onUnload            in showPage, if fromPage call fromPage.onunload
+133   actionButton        alter action button in toolbar call loadActionButton in showPage

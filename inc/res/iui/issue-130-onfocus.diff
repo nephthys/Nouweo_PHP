@@ -1,0 +1,12 @@
+--- iui.js	Mon Mar 30 18:29:07 2009
++++ iui.onfocus.js	Wed Apr 29 08:30:09 2009
+@@ -46,6 +46,9 @@
+                     setTimeout(slidePages, 0, fromPage, page, backwards);
+                 else
+                     updatePage(page, fromPage);
++                    
++			    if (page.onfocus)
++			    	page.onfocus();
+             }
+         }
+     },

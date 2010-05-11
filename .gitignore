@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+inc/configs/prod.php
+cache/*
+

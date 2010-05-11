@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">    
+    <head>
+    	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />        
+        <title>{_TITLE_PAGE_} | {_SITE_NAME_}</title>       
+        <if cond="{$_BASE_}"><base href="{_SITE_URL_}" /></if>   
+        <link rel="stylesheet" media="screen" type="text/css" href="themes/{_DESIGN_}/design_min.css?{_LAST_MOD_FILE_['design.css']}" />        
+        <link rel="stylesheet" media="print" type="text/css" href="themes/{_DESIGN_}/_print.css" />        
+        {_CSS_}                
+        <script type="text/javascript" src="inc/js/jquery-1.3.2.min.js"></script>        
+        <script type="text/javascript" src="inc/js/global.js"></script>        
+        <if cond="count({$_FORM_SIZE_}) > 0"><script type="text/javascript" src="inc/js/jquery.textarea.js"></script>        </if>        
+        {_JS_}                
+        <link rel="icon" type="image/png" href="themes/{_DESIGN_}/images/favicon.png" />        
+        <link rel="alternate" type="application/rss+xml" title="{_SITE_NAME_}" href="{_SITE_URL_}rss-5.html" />  
+        <if cond="{$_METAS_['desc']} != ''"><meta name="description" content="{_METAS_['desc']}" /></if>
+        <if cond="{$_METAS_['tags']} != ''"><meta name="keywords" content="{_METAS_['tags']}" /></if>
+        <script type="text/javascript">//<![CDATA[            
+            <if cond="count({$_FORM_SIZE_}) > 0">            
+            $(document).ready(function() { 
+            <foreach ary="{$_FORM_SIZE_}" as="{$FORM}"> $('textarea#{VALUE,FORM}:not(.processed)').TextAreaResizer(); </foreach> });            
+            </if>
+            var design_default = {_DESIGN_};            
+            var vote_cmt_pertinent = {PREF['nb_votes_cmts_ptn']};            
+            var post_tag_pertinent = "{LANG['common']['post_tag_pertinent']}";            
+            var loader_lang = "{LANG['common']['loader_lang']}";        
+        //]]></script>    
+    </head>
+    <body>            
+        <ul id="fastlinks">            
+            <li><a href="http://m.nouweo.com">{LANG['common']['try_mobile_version']}</a></li>            
+            <li><a href="#corps">{LANG['common']['access_go_content']}</a></li>            
+            <li><a href="#search">{LANG['common']['access_go_search']}</a></li>            
+            <li><a href="#sidebar">{LANG['common']['access_go_sidebar']}</a></li>        
+        </ul>                
+        
+        <div id="header">            
+            <div id="loader"></div>            
+            <if cond="{$IS_LOGGED_IN}"><div id="loader_user">
+            <ul>
+                <li><a href="news-70.html">{LANG['common']['user_contribute']}</a></li>                    
+                <li><a href="news-80.html">{LANG['common']['user_vote']}</a></li>                    
+                <li id="loader_user_lastitem"><a href="news-50.html">{LANG['common']['user_redige']}</a></li>
+            </ul>
+            </div></if>           
+            <div class="width_contenu">                
+            <form action="./search.html" method="get" id="search">                    
+                <p class="suggested_tags">{LANG['common']['exemple_search']} : <block name="_hot_search_"><a href="search.html?s={_hot_search_.REWRITE}">{_hot_search_.KEY}</a><if cond="{$_hot_search_.CURRENT} != {$_hot_search_.SIZE_OF}">, </if></block></p>                    
+                <p>
+                    <input name="s" id="s" type="text" class="input_search" onclick="if($(this).val()=='{LANG['common']['search_label']}') $(this).val('');" onkeyup="search_completion(this.value);" onblur="search_after();" value="{LANG['common']['search_label']}" />                        
+                    <input name="submit" type="submit" class="input_submit" value="{LANG['common']['search_submit']}" />                    
+                </p>                                                            
+                <div class="suggestionsBox" id="suggestions" style="display: none;">                        
+                    <div class="suggestionList" id="autoSuggestionsList"></div>
+                </div>                
+            </form>                                
+            
+            <h1><a href="./"><img src="themes/{_DESIGN_}/images/logo_beta.png" alt="{_SITE_NAME_}" /></a></h1>                
+            
+            <div class="bf_categories">                
+            <ul id="categories" class="arrondi_right">                
+                <block name="_categories_">
+                <if cond="{$_categories_.CURRENT} == 11"><li class="left_item" id="more_catsub"><a href="#"><img src="themes/{_DESIGN_}/images/more_opt.png" alt="" /> &nbsp;<strong>{LANG['common']['more_cats']}</strong></a><ul class="sub_menu"></if>                    
+                <li<if cond="{$_categories_.CURRENT} < 11"> class="left_item"</if>><a href="{_SITE_URL_}{_categories_.REWRITE}/" class="idemcat"><span>{_categories_.TITRE}</span></a></li>
+                <if cond="{$_categories_.CURRENT} == {$_categories_.SIZE_OF}"></ul></li></if></block>                
+            </ul>
+            </div>            
+            </div>                    
+        </div>
+        
+        <div id="speedmembre">        
+        <ul class="userbar">            
+            <li class="onglet_droite"><a href="users.html">{_NB_MBR_}</a></li>
+            <if cond="{$IS_LOGGED_IN}">
+            <li><if cond="!empty({$USER['u_avatar']})"><img src="{_ASSETS_['url_upload']}users/pictos/16_{USER['u_avatar']}.png" alt="" />&nbsp;</if>{_USER_TXT_WE}</li>            
+            <li><a href="news-5.html">{LANG['common']['user_suivi_news']}</a></li>            <li><a href="users-60.html">{LANG['common']['user_mod_profil']}</a></li>            
+            <if cond="check_auth('can_see_admin')"><li><a href="admin.html">{LANG['common']['admin']}</a></li></if>            
+            <li><a href="users-20-{USER['u_id']}.html">{LANG['common']['disconnect']}</a></li>        
+            <else />            
+            <li><form action="users-10.html" method="post">                    
+            <input name="nw_nickname" type="text" class="fast_form_login" />                    
+            <input name="nw_password" type="password" class="fast_form_pass" />                                        
+            <input type="hidden" name="nw_remember" value="1" />                    
+            <input type="submit" value="{LANG['common']['login_submit']}" name="submit" class="fast_form_submit" />                                        
+            {LANG['common']['or_maj']} <a href="users-30.html">{LANG['common']['register']}</a>                
+            </form></li>            
+            <li><a href="users-12.html">{LANG['common']['lost_pwd_hd']}</a></li>            
+            </if>
+        </ul>        
+        </div>                
+        
+        <div class="width_contenu">        
+        <div id="corps">            
+        
+        <p id="fil_ariane"><strong> > {LANG['common']['fa_location']} : </strong> <a href="./">{_SITE_NAME_}</a> > {_FA_}</p>                        
+        <if cond="strlen({$MSG_CONTENT}) > 0"><p class="redir_box {MSG_TYPE}">{MSG_CONTENT}</p></if>
+        

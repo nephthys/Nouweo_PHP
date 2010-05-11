@@ -1,0 +1,58 @@
+--- iui.js	Mon Mar 30 18:29:07 2009
++++ iui.script.js	Wed Apr 29 08:27:13 2009
+@@ -20,6 +20,7 @@
+ var hasOrientationEvent = false;
+ var portraitVal = "portrait";
+ var landscapeVal = "landscape";
++var loadedPages = [];
+ 
+ // *************************************************************************************************
+ 
+@@ -46,6 +47,14 @@
+                     setTimeout(slidePages, 0, fromPage, page, backwards);
+                 else
+                     updatePage(page, fromPage);
++                    
++			    if (loadedPages.indexOf(page.id) == -1)
++			    {
++			    	loadedPages.push(page.id);
++   
++			    	if (page.getAttribute("script"))
++		    			loadScript(page.getAttribute("script"));
++	    		}
+             }
+         }
+     },
+@@ -438,5 +447,32 @@
+ 
+ function $(id) { return document.getElementById(id); }
+ function ddd() { console.log.apply(console, arguments); }
++
++// use callback if you need to do something after script loads because script is loaded asynchronously
++function loadScript(filename, callback)
++{
++	var script = document.createElement("script");
++	
++	script.setAttribute("type","text/javascript");
++	script.setAttribute("src", filename);
++
++	if (callback)
++	{	
++		var done = false;
++		script.onload = script.onreadystatechange = function()
++		{
++			if( !done && ( !this.readyState 
++			                        || this.readyState == "loaded" 
++			                        || this.readyState == "complete") )
++			{
++				done = true;
++		
++				callback();
++			}
++		};
++	}
++	
++	document.getElementsByTagName("head")[0].appendChild(script);
++}
+ 
+ })();

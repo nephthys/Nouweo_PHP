@@ -1,0 +1,15 @@
+--- iui.js	Mon Mar 30 18:29:07 2009
++++ iui.onunload.js	Wed Apr 29 08:31:53 2009
+@@ -43,7 +43,12 @@
+                 currentPage = page;
+ 
+                 if (fromPage)
++                {
++	                if (fromPage.getAttribute("onunload") && backwards)
++						eval(fromPage.getAttribute("onunload"));
++	                
+                     setTimeout(slidePages, 0, fromPage, page, backwards);
++                }
+                 else
+                     updatePage(page, fromPage);
+             }

@@ -18,6 +18,7 @@
 
 Nw::$lang['news'] = array(
     'news'                      => 'News',
+    'brief'                     => 'Brève',
     
     /**
     *   Administration

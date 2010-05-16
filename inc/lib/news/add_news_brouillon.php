@@ -30,9 +30,11 @@ function add_news_brouillon($etat=1)
     /**
     *   Enregistrement de la news
     **/
+    
+    $is_breve = (isset($_POST['is_breve'])) ? $_POST['is_breve'] : 0;
 
-    Nw::$DB->query('INSERT INTO '.Nw::$prefix_table.'news (n_id_auteur, n_id_cat, n_titre, n_date, n_last_mod, n_etat, n_private, n_nb_versions, n_resume) VALUES('.intval(Nw::$dn_mbr['u_id']).',
-    '.intval($categorie_news).', \''.insertBD(trim($_POST['titre_news'])).'\', NOW(), NOW(), '.$etat.', '.$news_private.', 1, \''.$contenu_extrait.'\')') OR Nw::$DB->trigger(__LINE__, __FILE__);
+    Nw::$DB->query('INSERT INTO '.Nw::$prefix_table.'news (n_id_auteur, n_id_cat, n_titre, n_date, n_last_mod, n_etat, n_private, n_nb_versions, n_resume, n_breve) VALUES('.intval(Nw::$dn_mbr['u_id']).',
+    '.intval($categorie_news).', \''.insertBD(trim($_POST['titre_news'])).'\', NOW(), NOW(), '.$etat.', '.$news_private.', 1, \''.$contenu_extrait.'\', '.$is_breve.')') OR Nw::$DB->trigger(__LINE__, __FILE__);
 
     $id_last_news = Nw::$DB->insert_id;
 

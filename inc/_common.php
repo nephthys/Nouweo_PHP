@@ -67,6 +67,12 @@ include(PATH_ROOT.'inc/_config.php');
 if (!Nw::$DB->is_connected())
     error(Nw::$lang['common']['mysqlerror_title'], Nw::$lang['common']['mysqlerror_content']);
 
+if (!is_file(PATH_ROOT.Nw::$assets['dir_cache'].Nw::$site_lang.'.categories.php'))
+{
+    inc_lib('admin/gen_cachefile_categories');
+    gen_cachefile_categories();
+}
+
 if (!is_file(PATH_ROOT.Nw::$assets['dir_cache'].Nw::$site_lang.'.hot_search.php'))
 {
     inc_lib('admin/gen_cachefile_top_search');

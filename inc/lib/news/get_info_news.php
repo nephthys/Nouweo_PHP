@@ -32,7 +32,7 @@ function get_info_news($id_news, $id_version = 0)
 
     // Rqt SQL
     $rqt_dn_news = Nw::$DB->query('SELECT c_id, c_rewrite, c_nom, v_texte, n_nb_votes, n_nb_votes_neg, n_resume, n_nb_src,
-        n_last_version, n_nb_versions, n_id, n_id_auteur, n_id_cat, n_titre, n_etat,
+        n_last_version, n_nb_versions, n_id, n_id_auteur, n_id_cat, n_titre, n_breve, n_etat,
         n_vues, n_private, n_nbr_coms, i_id, i_nom, '.decalageh('n_date', 'date_news').',
         u_id, u_pseudo, u_alias, u_avatar, u_bio'.$add_champs_sql.'
         FROM '.Nw::$prefix_table.'news

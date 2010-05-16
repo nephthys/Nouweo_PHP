@@ -1,7 +1,0 @@
-syntax: glob
-inc/configs/local.php
-inc/configs/prod.php
-Thumbs.db
-**.html.php
-**_min.css
-cache/*

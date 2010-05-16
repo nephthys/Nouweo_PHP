@@ -49,7 +49,8 @@ class Page extends Core
         // Formulaire soumis
         if (isset($_POST['submit']))
         {
-            $array_post = array(    
+            $array_post = array(
+                'is_breve'          => (isset($_POST['is_breve'])) ? $_POST['is_breve'] : '',
                 'titre_news'        => $_POST['titre_news'],
                 'cat'               => (isset($_POST['cat'])) ? $_POST['cat'] : 0,
                 'contenu'           => $_POST['contenu'],
@@ -84,6 +85,7 @@ class Page extends Core
         
         // On affiche le template
         display_form(array( 
+                'is_breve'          => '',
                 'titre_news'        => '',
                 'cat'               => 0,
                 'contenu'           => '',

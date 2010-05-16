@@ -70,6 +70,7 @@ function edit_news($id, $author = false)
     if ($author)
     {
         $news_private = ( isset($_POST['private_news']) ) ? 1 : 0;
+        $is_breve = (isset($_POST['is_breve'])) ? $_POST['is_breve'] : 0;
         
         // Si on change le titre
         if ($_POST['titre_news'] != $donnees_news['n_titre'])
@@ -82,6 +83,7 @@ function edit_news($id, $author = false)
         
         $add_champs_sql[] = 'n_id_cat = '.intval($_POST['cat']);
         $add_champs_sql[] = 'n_private = '.$news_private;
+        $add_champs_sql[] = 'n_breve = '.$is_breve;
         
         /**
         *   Sources

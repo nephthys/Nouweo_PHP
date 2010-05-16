@@ -20,12 +20,25 @@ $ident_config = array(
 	'host'		=> 'localhost',
 	'user'		=> 'root',
 	'pass'		=> 'root',
-	'base'		=> 'nw',
+	'base'		=> 'nw_v2',
 	'pref'		=> 'nw_',
 	
 	// Paramètres du site
 	'sitelang'	=> 'fr',
 	'sitename'	=> 'Nouweo',
 	'slogan'	=> 'L\'actualité collaborative',
-	'siteurl'	=> 'http://localhost/nouweo/',
+	'siteurl'	=> 'http://127.0.0.1:8888/NW/',
+	
+	'assets'	=> array(
+		'dir_cache'		=> '../assets/cache/',
+		'dir_upload'	=> '../assets/upload/',
+		'dir_users'		=> '../assets/users/',
+		'url_upload'	=> 'http://127.0.0.1:8888/assets/',
+	),
+	
+	'id_devs'	=> array(1),
+	'social'	=> array(
+		'twitter'	=> 'http://twitter.com/nouweo',
+		'facebook'	=> 'http://www.facebook.com/pages/Nouweo/97545342434',
+	),
 );

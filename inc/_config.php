@@ -32,13 +32,13 @@ Nw::$site_url       = $ident_config['siteurl'];
 Nw::$site_name      = $ident_config['sitename'];
 Nw::$site_slogan    = $ident_config['slogan'];
 Nw::$site_lang      = $ident_config['sitelang'];
-Nw::$id_devs        = $ident_config['id_devs'];
+Nw::$id_devs        = (isset($ident_config['id_devs'])) ? $ident_config['id_devs'] : array();
 Nw::$assets         = $ident_config['assets'];
-Nw::$social         = $ident_config['social'];
-Nw::$twitter        = $ident_config['twitter'];
-Nw::$site_email     = $ident_config['email'];
-Nw::$site_email_nor = $ident_config['email_nor'];
-Nw::$rpx_login      = $ident_config['rpx_login'];
+Nw::$social         = (isset($ident_config['social'])) ? $ident_config['social'] : array();
+Nw::$twitter        = (isset($ident_config['twitter'])) ? $ident_config['twitter'] : array();
+Nw::$site_email     = (isset($ident_config['email'])) ? $ident_config['email'] : '';
+Nw::$site_email_nor = (isset($ident_config['email_nor'])) ? $ident_config['email_nor'] : '';
+Nw::$rpx_login      = (isset($ident_config['rpx_login'])) ? $ident_config['rpx_login'] : '';
 
 // Connexion à la base de données
 Nw::$DB = new Db($ident_config['host'], $ident_config['user'], $ident_config['pass'], $ident_config['base']);

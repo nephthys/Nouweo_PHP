@@ -482,29 +482,35 @@ function minify_css($file)
     return $stylesheet;
 }
 
-function create_mini( $img_source, $new_name, $extension, $n_width ) 
+function create_mini($img_source, $new_name, $extension, $n_width) 
 {
     // Quelle est l'extension du fichier ?
-    if( $extension == 'gif' )
-        $src = imagecreatefromgif( $img_source );
-    elseif( $extension == 'jpg' || $extension == 'jpeg' )
-        $src = imagecreatefromjpeg( $img_source );
+    if ($extension == 'gif')
+        $src = imagecreatefromgif($img_source);
+    elseif($extension == 'jpg' || $extension == 'jpeg')
+        $src = imagecreatefromjpeg($img_source);
     else
-        $src = imagecreatefrompng( $img_source );
+        $src = imagecreatefrompng($img_source);
     
-    $src_info = getimagesize( $img_source );
+    $src_info = getimagesize($img_source);
     
-    //Nouvelle hauteur
-    $n_height=round($n_width * $src_info[1] / $src_info[0]);
+    // Si l'image est plus petite que la taille de la minute, on ne redimensionne pas
+    if ($n_width >= $src_info[0])
+    {
+    	copy($img_source, $new_name);
+    	return;
+    }
+    
+    // Nouvelle hauteur
+    $n_height = round($n_width * $src_info[1] / $src_info[0]);
 
-    //tu créé la nouvelle image redimenssionée
-    $new_image = imagecreatetruecolor( $n_width, $n_height );
+    // Création de la nouvelle image redimenssionée
+    $new_image = imagecreatetruecolor($n_width, $n_height);
     
-    if ( $extension == 'gif' || $extension == 'png' ) 
+    if ($extension == 'gif' || $extension == 'png') 
     {
         $trnprt_indx = imagecolortransparent($src);
  
-        // If we have a specific transparent color
         if ($trnprt_indx >= 0) 
         {
             $trnprt_color    = imagecolorsforindex($src, $trnprt_indx);
@@ -523,16 +529,15 @@ function create_mini( $img_source, $new_name, $extension, $n_width )
         }
     }
     
-    //tu copies l'ancienne image dans la nouvelle, avec le redimensionnement
-    imagecopyresampled( $new_image, $src, 0, 0, 0, 0, $n_width, $n_height, $src_info[0], $src_info[1]);
+    // Copie de l'ancienne image dans la nouvelle, avec le redimensionnement
+    imagecopyresampled($new_image, $src, 0, 0, 0, 0, $n_width, $n_height, $src_info[0], $src_info[1]);
 
-    //il ne te reste plus qu'à enregistrer l'image par exemple avec :
     imagepng( $new_image, $new_name );
 }
 
-function recadrer_image($file,$file2,$hauteur_max,$largeur_max) {
+function recadrer_image($file, $file2, $hauteur_max, $largeur_max) {
 
-    $ext_upload = strtolower( substr( strrchr( $file, '.' ), 1 ) );
+    $ext_upload = strtolower(substr(strrchr($file, '.'), 1));
     $details = getimagesize($file);
 
     $hauteur = $details[1];
@@ -547,7 +552,7 @@ function recadrer_image($file,$file2,$hauteur_max,$largeur_max) {
     else
         $image = imagecreatefrompng($file);
     
-    if ( $ext_upload == 'gif' || $ext_upload == 'png' ) 
+    if ($ext_upload == 'gif' || $ext_upload == 'png') 
     {
         $trnprt_indx = imagecolortransparent($image_p);
  
@@ -570,9 +575,9 @@ function recadrer_image($file,$file2,$hauteur_max,$largeur_max) {
         }
     }
     
-    imagecopy( $image_p, $image, 0, 0, ($largeur-$largeur_max)/2, ($hauteur-$hauteur_max)/2, $largeur_max, $hauteur_max);
+    imagecopy($image_p, $image, 0, 0, ($largeur-$largeur_max)/2, ($hauteur-$hauteur_max)/2, $largeur_max, $hauteur_max);
     
-    imagepng( $image_p, $file2 ); 
+    imagepng($image_p, $file2); 
 }
 
 function add_symb_photo($fond, $symbole)

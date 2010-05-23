@@ -34,12 +34,12 @@ function add_img_news($id_news, $ordre = 1)
 
     // Extensions non autorisées
     if (!in_array($ext_upload, $array_extensions)) {
-        return FALSE;
+        return false;
     }
 
     // La taille de l'image est trop élevée
     if (round($taille_file / 1000) > Nw::$droits['quota_max_size_img'] && Nw::$droits['quota_max_size_img'] != 0) {
-        return FALSE;
+        return false;
     }
 
     $link_picture_hd    = PATH_ROOT.Nw::$assets['dir_upload'].'hd/'.$nom_fichier.'_'.$id_news.'.png';
@@ -61,8 +61,6 @@ function add_img_news($id_news, $ordre = 1)
     create_mini($link_picture_hd, $link_th2, $ext_upload, 180);
     chmod(PATH_ROOT.Nw::$assets['dir_upload'].'th1/'.$nom_fichier.'_'.$id_news.'.png', 0777);
     chmod($link_th2, 0777);
-
-    add_symb_photo($link_th2, PATH_ROOT.Nw::$assets['dir_upload'].'cfg/symb_1.png');
 
     Nw::$DB->query('INSERT INTO '.Nw::$prefix_table.'news_images (i_id_news, i_nom, i_date, i_ordre)
     VALUES('.intval($id_news).', \''.$nom_fichier.'\', NOW(), '.intval($ordre).')') OR Nw::$DB->trigger(__LINE__, __FILE__);

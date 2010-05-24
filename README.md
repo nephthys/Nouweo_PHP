@@ -1,20 +1,19 @@
 Installation
 ============
 
-1.  Modifier le **fichier de configuration** de base dans ./inc/configs/local.php.
-Les identifiants de votre base de données MySQL ('host', 'user', 'pass' et
-'base'), les URLs et chemins du site ('siteurl' et 'assets') sont
-particulièrement importants.
+1.  Renseignez les identifiants de votre base de données MySQL 
+('host', 'user', 'pass' et 'base') et les URLs / chemins propre à votre configuration dans le 
+**fichier local.php** situé dans le dossier inc/configs/.
 
-2.  Importer **tables.sql** dans votre base de données MySQL.
+2.  Importez **tables.sql** dans votre base de données MySQL.
 
-3.  Créer les **dossiers des ressources** ../assets/, ../assets/cache/, 
-../assets/upload/ et ../assets/users/. Utilisez uniquement des chemins
+3.  Créez les **dossiers des ressources** assets/, assets/cache/, assets/cache/tpl/, 
+assets/upload/ et assets/users/. Utilisez uniquement des chemins
 relatifs pour définir l'emplacement de ces dossiers.
 
 4.  Si vous voulez **mettre en ligne le site**, il faut simplement créer un 
-fichier prod.php dans le dossier ./inc/configs/, en reprenant la même
-structure que local.php. S'il y a  deux configurations, prod.php
+fichier prod.php dans le dossier inc/configs/, en reprenant la même
+structure que local.php. S'il y a deux configurations, prod.php
 sera toujours inclut en priorité.
 
 
